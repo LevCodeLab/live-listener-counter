@@ -5,18 +5,18 @@
 ![Crypto](https://img.shields.io/badge/Receipts-SHA--256-141418?style=flat-square&color=141418&labelColor=26262E)
 ![License](https://img.shields.io/badge/License-MIT-141418?style=flat-square&color=141418&labelColor=26262E)
 
-Zero-dependency Node.js + JavaScript heartbeat attendance counter, listener streak tracker, and SHA-256 Proof-of-Listen receipt verifier for live audio rooms.
+Zero dependency Node.js listener counter and streak tracker for live audio rooms.
 
-If you only count open WebSocket connections for live audio rooms, zombie mobile tabs inflate your room numbers and fake single-POST timers cheat listen rewards. This library tracks real 15-second heartbeats, clamps max delta per ping so nobody can spoof 3 hours in one request, evicts silent tabs after `45s`, and issues verifiable SHA-256 session receipts once a listener hits the target airtime.
+Counting raw socket connections lies because dead phone tabs stay open forever. This tiny tracker counts real 15 second heartbeats, blocks fake time jumps, and drops silent tabs after 45 seconds. Zero npm bloat, works on pure divine code and Node built ins.
 
 ![live-listener-counter preview](./assets/preview.svg)
 
-## What this thing actually does
+## What it does
 
-- **Bounded heartbeat attendance (`ListenerAttendanceTracker`)**: Clamps per-ping time accrual (`maxDeltaSeconds = 20`), tracks continuous `heartbeatStreak` + `longestStreak`, and drops stale listeners automatically when `now - lastHeartbeatAt > ttlMs`.
-- **Dial-aware station registry (`channelRegistry.js`)**: Maps FM-style audio room channels (`107.9` down to `092.1`) and locates the nearest live station on the dial (`findNearestActiveChannel`).
-- **SHA-256 session attendance receipts (`proofOfListenService.js`)**: Generates deterministic Web Crypto / Node `crypto` SHA-256 receipts (or accepts a custom Ed25519 message signer) with automatic per-session deduplication.
-- **Zero-dependency HTTP server included**: Run `npm start` to expose `/heartbeat`, `/rooms/:id/listeners`, `/stations/:frequency`, and `/badges/claim` out of the box.
+- Counts real active listeners in each audio room using 15 second heartbeats.
+- Caps every ping at 20 seconds max so nobody can fake 3 hours in one request.
+- Tracks listener streaks and drops dead tabs automatically after 45 seconds.
+- Mints a verifiable `SHA 256` receipt once a listener stays for 15 minutes.
 
 ## Run it in 60 seconds
 
@@ -24,14 +24,14 @@ If you only count open WebSocket connections for live audio rooms, zombie mobile
 git clone https://github.com/LevCodeLab/live-listener-counter.git
 cd live-listener-counter
 
-# Zero npm packages needed! Run unit + HTTP integration tests immediately:
+# Zero npm install needed! Run tests right away:
 npm test
 
-# Start the standalone HTTP heartbeat server on :3020
+# Start the HTTP server on port 3020
 npm start
 ```
 
-Test a heartbeat from another terminal:
+Send a test heartbeat from another terminal:
 
 ```bash
 curl -X POST http://localhost:3020/heartbeat \
@@ -39,16 +39,15 @@ curl -X POST http://localhost:3020/heartbeat \
   -d '{"roomId":"104.7","listenerId":"user_01","handle":"kabir"}'
 ```
 
-## Where to edit stuff
+## Which file to edit
 
-| File | What lives here |
+| File | What to change here |
 | :--- | :--- |
-| `src/services/attendanceTracker.js` | `ListenerAttendanceTracker` class: TTL eviction, anti-cheat delta clamp, and streak math |
-| `src/services/proofOfListenService.js` | SHA-256 attendance badge issuer, integrity verifier, and storage adapter |
-| `src/data/channelRegistry.js` | Station dial definitions plus `findNearestActiveChannel` and `findMostRecentActiveChannel` |
-| `src/services/fmService.js` | Station metadata lookup with optional `FM_API_URL` remote fetch |
-| `src/server.js` | Zero-dependency Node `http` server exposing heartbeat and badge claim routes |
-| `test/listenerCounter.test.js` | Unit and HTTP endpoint test suite (`node:test`) |
+| `src/services/attendanceTracker.js` | Change heartbeat timeout, max seconds per ping, or streak rules |
+| `src/services/proofOfListenService.js` | Change `SHA 256` receipt format and badge verification |
+| `src/data/channelRegistry.js` | Edit default station names and frequencies |
+| `src/services/fmService.js` | Plug in an external station metadata API URL |
+| `src/server.js` | Edit HTTP routes (`/heartbeat`, `/rooms/:id/listeners`, `/badges/claim`) |
 
 ## License
 
