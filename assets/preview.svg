@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="430" viewBox="0 0 900 430" fill="none">
+  <rect width="900" height="430" rx="16" fill="#0B0B0E"/>
+  <rect x="20" y="20" width="860" height="390" rx="12" fill="#141418" stroke="#26262E" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <text x="48" y="58" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" font-weight="700">live-listener-counter</text>
+  <rect x="640" y="38" width="212" height="28" rx="14" fill="#141418" stroke="#26262E"/>
+  <text x="658" y="56" fill="#E4E4E7" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5">HEARTBEAT TTL: 45s | MAX +20s</text>
+
+  <line x1="20" y1="82" x2="880" y2="82" stroke="#26262E"/>
+
+  <!-- Metric Cards -->
+  <rect x="48" y="102" width="256" height="84" rx="10" fill="#0B0B0E" stroke="#26262E"/>
+  <text x="66" y="128" fill="#71717A" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10">ACTIVE ROOM // 104.7 FM</text>
+  <text x="66" y="162" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="24" font-weight="700">42 online</text>
+
+  <rect x="322" y="102" width="256" height="84" rx="10" fill="#0B0B0E" stroke="#26262E"/>
+  <text x="340" y="128" fill="#71717A" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10">LONGEST CONTINUOUS STREAK</text>
+  <text x="340" y="162" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="24" font-weight="700">118 pings</text>
+
+  <rect x="596" y="102" width="256" height="84" rx="10" fill="#0B0B0E" stroke="#26262E"/>
+  <text x="614" y="128" fill="#71717A" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10">BADGE QUALIFY THRESHOLD</text>
+  <text x="614" y="162" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="24" font-weight="700">900s (15m)</text>
+
+  <!-- Listener Attendance Table -->
+  <rect x="48" y="204" width="804" height="184" rx="10" fill="#0B0B0E" stroke="#26262E"/>
+  <text x="70" y="232" fill="#71717A" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5">LISTENER       ROOM        LISTEN TIME    STREAK     SHA-256 RECEIPT              STATUS</text>
+  <line x1="48" y1="244" x2="852" y2="244" stroke="#26262E"/>
+
+  <text x="70" y="272" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12">@kabir         104.7 FM    1,420s         95x        POL-1047-9F3A81C2            </text>
+  <rect x="748" y="256" width="82" height="22" rx="6" fill="#FFFFFF"/>
+  <text x="762" y="271" fill="#000000" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700">VERIFIED</text>
+
+  <text x="70" y="308" fill="#E4E4E7" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12">@anya          098.8 FM      960s         64x        POL-0988-4D12E70B            </text>
+  <rect x="748" y="292" width="82" height="22" rx="6" fill="#FFFFFF"/>
+  <text x="762" y="307" fill="#000000" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700">VERIFIED</text>
+
+  <text x="70" y="344" fill="#E4E4E7" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12">@dev_rahul     101.7 FM      410s         28x        pending (490s left)          </text>
+  <rect x="748" y="328" width="82" height="22" rx="6" fill="#141418" stroke="#26262E"/>
+  <text x="762" y="343" fill="#E4E4E7" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10">LISTENING</text>
+</svg>
