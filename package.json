@@ -1,0 +1,25 @@
+{
+  "name": "live-listener-counter",
+  "version": "1.0.0",
+  "description": "Zero-dependency heartbeat-based live audio room attendance counter, streak tracker, and SHA-256 session receipt verifier",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test test/*.test.js"
+  },
+  "keywords": [
+    "audio-rooms",
+    "listener-counter",
+    "heartbeat",
+    "attendance-tracker",
+    "streaks",
+    "nodejs"
+  ],
+  "author": "LevCodeLab",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
